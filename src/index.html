@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <!-- head에는 주로 설정 정보가 들어감 -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!-- body는 정보 전달하는 내용들 -->
+  <body>
+    <!-- 
+      <h1></h1> ~ <h6></h6> 타이틀이 될 만한 부분에 사용 (글자 크기)
+      <p></p> 단락 구분 <br /> 개행
+      <p><a href = "">test</a></p> ""에 링크 url
+      <p><i></i></p> 이태릭체
+      <p><sub></sub></p> 위에 조그만하게
+      <p><ins></ins></p> 밑줄
+      <p><del></del></p> 취소선
+
+
+      각 영역에 맞게 header, main, footer 등 정확한 구분을 해주고,
+      공지사항, FAQ, 고객센터 같은 게시판 영역이라면 해당 영역에 article을 써주고,
+      그 외 논리적인 구분은 모두 section으로 처리하면 될것 같습니다.
+      굳이 구분이 필요없고, 블럭요소가 필요하다면 div 를 쓰면 되겠구요.
+    -->
+    가나다라 <br />
+    <div id="menu" style="width: 100%; height: 100%; border: 1px">
+      <div
+        id="left"
+        style="
+          width: 30%;
+          height: 170px;
+          float: left;
+          background-image: -moz-linear-gradient(to right, #5e42a6, #b74e91);
+          box-sizing: border-box;
+        "
+      >
+        left
+      </div>
+      <div
+        id="right"
+        style="
+          width: 70%;
+          height: 170px;
+          float: right;
+          background-color: beige;
+          box-sizing: border-box;
+        "
+      >
+        right
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
