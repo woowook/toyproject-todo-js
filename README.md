@@ -3,6 +3,5 @@
 # Readme는 나중에
 
 ## HTML TAG
-### h1 - 
+### <ui> unordered list, 순서가 없는 list
 
-### dd
