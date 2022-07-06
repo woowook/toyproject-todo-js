@@ -1,4 +1,9 @@
 /* eslint-env browser */
+
+// querySelector - html 요소를 선택할 때 사용되며 가장 첫번째 요소를 선택
+// id의 경우 #을 붙이고 class인 경우 .를 붙여서 선택, 태그는 태그 그대로
+
+// Html에서 class 이름이 toDoForm을 찾아서 첫번째 요소를 리턴
 const toDoForm = document.querySelector(".toDoForm");
 const toDoInput = toDoForm.querySelector("input");
 const toDos = document.querySelector(".toDos");
