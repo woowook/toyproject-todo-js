@@ -2,36 +2,38 @@
 
 // querySelector - html 요소를 선택할 때 사용되며 가장 첫번째 요소를 선택
 // id의 경우 #을 붙이고 class인 경우 .를 붙여서 선택, 태그는 태그 그대로
-
 // Html에서 class 이름이 toDoForm을 찾아서 첫번째 요소를 리턴
 const toDoForm = document.querySelector(".toDoForm");
 const toDoInput = toDoForm.querySelector("input");
 const toDos = document.querySelector(".toDos");
+const addTodoButton = document.querySelector(".addBtn");
+const todoItem = document.querySelector(".li");
 
-const TODOLIST = "toDoList";
-let toDoList = [];
+const TODOLIST = "toDoList"; // 추가
+let toDoList = []; // 추가
 
 function loadToDoList() {
-  // https://developer.mozilla.org/ko/docs/Web/API/Window/localStorage
   const loadedToDoList = localStorage.getItem(TODOLIST);
   if (loadedToDoList !== null) {
-    // JSON.parse - String 객체를 json 객체로 변환
     const parsedToDoList = JSON.parse(loadedToDoList);
     for (const toDo of parsedToDoList) {
-      const { text } = toDo;
+      const { text } = toDo; // Const text = toDo;
       paintToDo(text);
       saveToDo(text);
     }
   }
 }
 
-function saveToDoList() {
-  // 브라우저에 key-value 값을 storage에 저장
-  // setItem(key, value) - 아이템 추가
-  // getItem(key) - 아이템을 읽기 위해 사용
-  // JSON.stringify - json 객체를 String 객체로 변환
-  localStorage.setItem(TODOLIST, JSON.stringify(toDoList));
+function init() {
+  loadToDoList(); // 추가
+  // https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
+  // https://developer.mozilla.org/ko/docs/Web/Events
+  toDoForm.addEventListener("submit", createToDo);
+  addTodoButton.addEventListener("click", createToDo);
+  todoItem.addEventListener("click", completeTodo);
 }
+
+init();
 
 function saveToDo(toDo) {
   const toDoObject = {
@@ -39,19 +41,11 @@ function saveToDo(toDo) {
     id: toDoList.length + 1,
   };
   toDoList.push(toDoObject);
-  saveToDoList();
-}
-
-function delToDo(event) {
-  const { target: button } = event;
-  const li = button.parentNode;
-  li.remove();
-  toDoList = toDoList.filter((toDo) => toDo.id !== Number(li.id));
-  saveToDoList();
+  localStorage.setItem(TODOLIST, JSON.stringify(toDoList));
 }
 
 function createToDo(event) {
-  event.preventDefault();
+  event.preventDefault(); // https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault
   const toDo = toDoInput.value;
   paintToDo(toDo);
   saveToDo(toDo);
@@ -59,25 +53,35 @@ function createToDo(event) {
 }
 
 function paintToDo(toDo) {
-  // JS에서 html 요소를 생성하기 위해 createElement 사용 (li, span)
   const li = document.createElement("li");
   const span = document.createElement("span");
-  const delButton = document.createElement("button");
-  delButton.classList.add("delBtn");
-  // DelButton.innerText = 'Del';
-  // https://developer.mozilla.org/ko/docs/Web/API/Node/textContent
-  delButton.textContent = "Del";
+  const delButton = document.createElement("span");
+  delButton.textContent = "X";
+  delButton.classList.add("close");
   delButton.addEventListener("click", delToDo);
   span.innerHTML = toDo;
   li.append(span);
   li.append(delButton);
   li.id = toDoList.length + 1;
+  li.addEventListener("click", function () {
+    completeTodo(li.id);
+  });
   toDos.append(li);
 }
 
-function init() {
-  loadToDoList();
-  toDoForm.addEventListener("submit", createToDo);
+function delToDo(event) {
+  const { target: button } = event; // Const button = event.target;
+  const li = button.parentNode; // ParentNode메서드는 해당 HTML 태그의 부모 태그를 반환한다.
+  li.remove();
+  toDoList = toDoList.filter((toDo) => toDo.id !== Number(li.id)); // Function (toDo) { return toDo.id !== li.id;}
+  localStorage.setItem(TODOLIST, JSON.stringify(toDoList));
 }
 
-init();
+function completeTodo(id) {
+  const item = document.getElementById(id);
+  if (item.classList.contains("checked")) {
+    item.classList.remove("checked");
+  } else {
+    item.classList.add("checked");
+  }
+}
