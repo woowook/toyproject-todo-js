@@ -3,13 +3,13 @@
 // querySelector - html 요소를 선택할 때 사용되며 가장 첫번째 요소를 선택
 // id의 경우 #을 붙이고 class인 경우 .를 붙여서 선택, 태그는 태그 그대로
 // Html에서 class 이름이 toDoForm을 찾아서 첫번째 요소를 리턴
-const toDoForm = document.querySelector(".toDoForm");
-const toDoInput = toDoForm.querySelector("input");
-const toDos = document.querySelector(".toDos");
-const addTodoButton = document.querySelector(".addBtn");
-const todoItem = document.querySelector(".li");
+const toDoForm = document.querySelector('.toDoForm');
+const toDoInput = toDoForm.querySelector('input');
+const toDos = document.querySelector('.toDos');
+const addTodoButton = document.querySelector('.addBtn');
+const todoItem = document.querySelector('.li');
 
-const TODOLIST = "toDoList"; // 추가
+const TODOLIST = 'toDoList'; // 추가
 let toDoList = []; // 추가
 
 function loadToDoList() {
@@ -28,9 +28,9 @@ function init() {
   loadToDoList(); // 추가
   // https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
   // https://developer.mozilla.org/ko/docs/Web/Events
-  toDoForm.addEventListener("submit", createToDo);
-  addTodoButton.addEventListener("click", createToDo);
-  todoItem.addEventListener("click", completeTodo);
+  toDoForm.addEventListener('submit', createToDo);
+  addTodoButton.addEventListener('click', createToDo);
+  todoItem.addEventListener('click', completeTodo);
 }
 
 init();
@@ -49,21 +49,21 @@ function createToDo(event) {
   const toDo = toDoInput.value;
   paintToDo(toDo);
   saveToDo(toDo);
-  toDoInput.value = "";
+  toDoInput.value = '';
 }
 
 function paintToDo(toDo) {
-  const li = document.createElement("li");
-  const span = document.createElement("span");
-  const delButton = document.createElement("span");
-  delButton.textContent = "X";
-  delButton.classList.add("close");
-  delButton.addEventListener("click", delToDo);
+  const li = document.createElement('li');
+  const span = document.createElement('span');
+  const delButton = document.createElement('span');
+  delButton.textContent = 'X';
+  delButton.classList.add('close');
+  delButton.addEventListener('click', delToDo);
   span.innerHTML = toDo;
   li.append(span);
   li.append(delButton);
   li.id = toDoList.length + 1;
-  li.addEventListener("click", function () {
+  li.addEventListener('click', function () {
     completeTodo(li.id);
   });
   toDos.append(li);
@@ -79,9 +79,9 @@ function delToDo(event) {
 
 function completeTodo(id) {
   const item = document.getElementById(id);
-  if (item.classList.contains("checked")) {
-    item.classList.remove("checked");
+  if (item.classList.contains('checked')) {
+    item.classList.remove('checked');
   } else {
-    item.classList.add("checked");
+    item.classList.add('checked');
   }
 }

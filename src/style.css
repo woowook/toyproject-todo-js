@@ -20,7 +20,7 @@ ul li {
   position: relative;
   padding: 12px 8px 12px 40px;
   list-style-type: none;
-  background: #eee;
+  /* background: #eee; */
   font-size: 18px;
   transition: 0.2s;
 
@@ -128,7 +128,7 @@ div.row {
   width: 100%;
   height: 100%;
   /* display: flex; */
-  border: 1px solid #003458;
+  /* border: 1px solid #003458; */
 }
 
 div.left-side {
@@ -138,7 +138,7 @@ div.left-side {
   position: fixed;
   box-sizing: border-box;
   /* background-color: aqua; */
-  background-image: url("../image/banner.jpg");
+  /* background-image: url("../image/banner.jpg"); */
   background-size: cover;
 }
 
@@ -148,7 +148,7 @@ div.main {
   float: right;
   padding-left: 5%;
   box-sizing: border-box;
-  background-color: blanchedalmond;
+  /* background-color: blanchedalmond; */
 }
 
 .complete-all-btn {
@@ -183,4 +183,12 @@ div.one {
 
 div.two {
   height: 100vh;
+}
+
+.bgImage {
+  /* width: 100vw; */
+  height:auto;
+  position: absolute;
+  z-index: -1;
+  background-size: cover;
 }
