@@ -20,7 +20,7 @@ ul li {
   position: relative;
   padding: 12px 8px 12px 40px;
   list-style-type: none;
-  /* background: #eee; */
+  background: #eee;
   font-size: 18px;
   transition: 0.2s;
 
@@ -105,7 +105,7 @@ input {
 /* Style the "Add" button */
 .addBtn {
   padding: 10px;
-  width: 20%;
+  width: 25%;
   background: #d9d9d9;
   color: #555;
   float: left;
@@ -124,71 +124,70 @@ input {
   background-color: #bbb;
 }
 
-div.row {
-  width: 100%;
-  height: 100%;
-  /* display: flex; */
-  /* border: 1px solid #003458; */
-}
-
-div.left-side {
-  width: 20%;
-  height: 100%;
-  float: left;
-  position: fixed;
-  box-sizing: border-box;
-  /* background-color: aqua; */
-  /* background-image: url("../image/banner.jpg"); */
-  background-size: cover;
-}
-
-div.main {
-  width: 80%;
-  /* position: relative; */
-  float: right;
-  padding-left: 5%;
-  box-sizing: border-box;
-  /* background-color: blanchedalmond; */
-}
-
-.complete-all-btn {
-  float: left;
-  font-size: 20px;
-  height: 40px;
-  color: #f44336;
-}
-
-div.main-top {
-  width: 100%;
-  height: 80%;
-  float: right;
-}
-
-div.main-bottom {
-  width: 100%;
-  height: 20%;
-  box-sizing: border-box;
-  /* background-color: #003458; */
-}
-
-div.welcome {
-  /* width: 100vw; */
-  height: 100vh;
-}
-
-div.one {
-  /* width: 100vw; */
-  height: 100vh;
-}
-
-div.two {
-  height: 100vh;
-}
-
 .bgImage {
-  /* width: 100vw; */
-  height:auto;
-  position: absolute;
-  z-index: -1;
   background-size: cover;
+}
+
+/*  asdf*/
+
+.bottom-items {
+  padding: 20px 20px 20px 27px;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  align-items: baseline;
+  border-radius: 5px;
+  background: var(--todo-bg);
+}
+
+.filter {
+  margin-right: 47px;
+}
+
+.filter input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.filter label {
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.filter label:hover {
+  color: var(--font-color-hover);
+}
+
+.filter input[type="radio"]:checked ~ span {
+  color: hsl(221, 62%, 52%);
+}
+
+.clear {
+  color: var(--font-color);
+  cursor: pointer;
+}
+
+.clear:hover {
+  color: var(--font-color-hover);
+}
+
+.flex-row {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+.checkbox {
+  min-width: none;
+  min-height: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.5rem 0.5rem;
+  border-radius: 50px;
+  border: 1px solid lightgray;
+  cursor: pointer;
+  text-align: center;
+  /* appearance: none; */
 }

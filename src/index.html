@@ -8,133 +8,33 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="row">
-      <!-- 왼쪽 사이드 바 -->
-      <div class="left-side">
-        <!-- 페이지 내 링크 -->
-        <nav>
-          <ul>
-            <li><a href="#welcome">WELCOME</a></li>
-            <li><a href="#one">ONE</a></li>
-            <li><a href="#two">TWO</a></li>
-            <li><a href="#three">THREE</a></li>
-            <li><a href="#asdf">THREE</a></li>
-          </ul>
-        </nav>
+    <div id="myDIV" class="header">
+      <form class="toDoForm">
+        <h2 style="margin: 5px">My To Do List</h2>
+        <input type="text" placeholder="what are you going to do today?" />
+        <span class="addBtn">Add</span>
+      </form>
+    </div>
+    <ul class="toDos"></ul>
+    <div class="bottom-items flex-row">
+      <div class="items-left"><span>2</span> items left</div>
+      <div class="filter flex-row">
+        <label>
+          <input type="radio" name="filter" id="all" checked />
+          <span>All</span>
+        </label>
+        <label>
+          <input type="radio" name="filter" id="active" />
+          <span>Active</span>
+        </label>
+        <label>
+          <input type="radio" name="filter" id="completed" />
+          <span>Completed</span>
+        </label>
       </div>
-
-      <div class="main">
-        <!-- WEOCOME 화면 -->
-        <div id="welcome" class="welcome">
-          <div class="inner">
-            <h1>TODO LIST</h1>
-            <p>블라블라fk</p>
-            <ul class="actions">
-              <li><a href="#one" class="button scrolly">시작하기</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- 첫번째 화면 -->
-        <div id="one" class="one">
-          <div class="inner">
-            <h1>첫번째</h1>
-            <p>할일 입력해보시죠</p>
-            <div class="main-top">
-              <ul class="toDos"></ul>
-            </div>
-            <div class="todo-input-box">
-            <form class="toDoForm">
-              <button class="complete-all-btn">✔</button>
-              <input
-                type="text"
-                class="todo-input"
-                placeholder="해야 할 일을 입력해주세요."
-              />
-              <span class="addBtn">ADD</span>
-            </form>
-          </div>
-
-          <ul class="todo-list"></ul>
-        </div>
-      </div>
-        <!-- 두번째 화면 -->
-        <div id="two" class="two">
-          <div class="inner">
-            <h1>두번째</h1>
-            <p>두번째 페이지</p>
-            </div>
-          </div>
-
-        <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-
-
-
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-          <!-- 세번째 화면 -->
-        <div id="three" class="three">
-          <div class="inner">
-            <h1>세번째</h1>
-            <p>세번째 페이지</p>
-            </div>
-          </div>
-      <!-- <div id="myDIV" class="header">
-        <form class="toDoForm">
-          <h2 style="margin: 5px">My To Do List</h2>
-          <input type="text" placeholder="what are you going to do today?" />
-          <span class="addBtn">Add</span>
-        </form>
-      </div> -->
-      <ul class="toDos"></ul>
+      <span class="clear">Clear Completed</span>
     </div>
     <script src="app.js"></script>
-    <script src="background.js"></script>
+    <!-- <script src="background.js"></script> -->
   </body>
 </html>
