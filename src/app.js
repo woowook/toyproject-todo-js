@@ -29,9 +29,10 @@ function init() {
   loadToDoList(); // 추가
   // https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
   // https://developer.mozilla.org/ko/docs/Web/Events
-  toDoForm.addEventListener("submit", createToDo);
+
   addTodoButton.addEventListener("click", createToDo);
-  todoItem.addEventListener("click", completeTodo);
+  toDoForm.addEventListener("submit", createToDo);
+  toDoForm.addEventListener("click", completeTodo);
 }
 
 init();
@@ -50,27 +51,33 @@ function saveToDo(toDo) {
 }
 
 function createToDo(event) {
-  event.preventDefault(); // https://developer.mozilla.org/ko/docs/Web/API/Event/preventDefault
-  const toDo = toDoInput.value;
-  paintToDo(toDo);
-  saveToDo(toDo);
-  toDoInput.value = "";
+  event.preventDefault(); // 이벤트에 대해 새창이 열리지 않도록
+  // 미입력이나 스페이스 입력시 제한
+  // https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions
+  if (toDoInput.value.replace(/\s/g, "").length === 0) {
+    alert("미입력 혹은 공백을 입력했음");
+    toDoInput.focus();
+  } else {
+    const toDo = toDoInput.value;
+    paintToDo(toDo);
+    saveToDo(toDo);
+    toDoInput.value = "";
+  }
 }
-
 function paintToDo(toDo) {
   // JS에서 html 요소를 생성하기 위해 createElement 사용 (li, span)
   const li = document.createElement("li");
   const span = document.createElement("span");
-  const checkbox = document.createElement("input");
+  // const checkbox = document.createElement("input");
   const delButton = document.createElement("span");
-  checkbox.type = "checkbox";
-  checkbox.classList.add("checkbox");
+  // checkbox.type = "checkbox";
+  // checkbox.classList.add("checkbox");
 
   delButton.textContent = "X";
   delButton.classList.add("close");
   delButton.addEventListener("click", delToDo);
   span.innerHTML = toDo;
-  li.append(checkbox);
+  // li.append(checkbox);
   li.append(span);
   li.append(delButton);
   li.id = toDoList.length + 1;
@@ -78,10 +85,10 @@ function paintToDo(toDo) {
     completeTodo(li.id);
   });
   // checkbox?
-  checkbox.addEventListener("click", function () {
-    // completeTodo(li.id);
-    console.log("checked");
-  });
+  // checkbox.addEventListener("click", function () {
+  //   // completeTodo(li.id);
+  //   console.log("checked");
+  // });
 
   toDos.append(li);
 }
@@ -111,12 +118,6 @@ function removeTodoItem(elem) {
   updateItemsCount(-1);
 }
 
-TODOLIST.addEventListener("click", (event) => {
-  if (event.target.classList.contains("remove")) {
-    removeTodoItem(event.target.parentElement);
-  }
-});
-
 // clear comleted items
 
 document.querySelector(".clear").addEventListener("click", () => {
@@ -135,7 +136,7 @@ document.querySelectorAll(".filter input").forEach((radio) => {
 });
 
 function filterTodoItems(id) {
-  const allItems = TODOLIST.querySelectorAll("li");
+  const allItems = toDoList.querySelectorAll("li");
 
   switch (id) {
     case "all":
