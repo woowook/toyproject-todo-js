@@ -25,18 +25,6 @@ function loadToDoList() {
   }
 }
 
-function init() {
-  loadToDoList(); // 추가
-  // https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
-  // https://developer.mozilla.org/ko/docs/Web/Events
-
-  addTodoButton.addEventListener("click", createToDo);
-  toDoForm.addEventListener("submit", createToDo);
-  toDoForm.addEventListener("click", completeTodo);
-}
-
-init();
-
 function saveToDo(toDo) {
   const toDoObject = {
     text: toDo,
@@ -82,7 +70,8 @@ function paintToDo(toDo) {
   li.append(delButton);
   li.id = toDoList.length + 1;
   li.addEventListener("click", function () {
-    completeTodo(li.id);
+    // completeTodo(li.id);
+    complete(li.id);
   });
   // checkbox?
   // checkbox.addEventListener("click", function () {
@@ -101,12 +90,22 @@ function delToDo(event) {
   localStorage.setItem(TODOLIST, JSON.stringify(toDoList));
 }
 
-function completeTodo(id) {
-  const item = document.getElementById(id);
-  if (item.classList.contains("checked")) {
-    item.classList.remove("checked");
+// function completeTodo(id) {
+//   const item = document.getElementById(id);
+//   if (item.classList.contains("checked")) {
+//     item.classList.remove("checked");
+//   } else {
+//     item.classList.add("checked");
+//   }
+// }
+
+function complete(event) {
+  // https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement
+  // const tar = event.target.parentElement;
+  if (event.classList.contains("checked")) {
+    event.classList.remove("checked");
   } else {
-    item.classList.add("checked");
+    event.classList.add("checked");
   }
 }
 
@@ -160,3 +159,16 @@ function filterTodoItems(id) {
       break;
   }
 }
+
+function init() {
+  loadToDoList(); // 추가
+  // https://developer.mozilla.org/ko/docs/Web/API/EventTarget/addEventListener
+  // https://developer.mozilla.org/ko/docs/Web/Events
+
+  addTodoButton.addEventListener("click", createToDo);
+  toDoForm.addEventListener("submit", createToDo);
+  // toDoForm.addEventListener("click", completeTodo);
+  toDoForm.addEventListener("click", complete);
+}
+
+init();
