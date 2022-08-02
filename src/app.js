@@ -56,28 +56,27 @@ function paintToDo(toDo) {
   // JS에서 html 요소를 생성하기 위해 createElement 사용 (li, span)
   const li = document.createElement("li");
   const span = document.createElement("span");
-  // const checkbox = document.createElement("input");
+  const checkbox = document.createElement("input");
   const delButton = document.createElement("span");
-  // checkbox.type = "checkbox";
-  // checkbox.classList.add("checkbox");
+  checkbox.type = "checkbox";
+  checkbox.classList.add("checkbox");
 
   delButton.textContent = "X";
   delButton.classList.add("close");
   delButton.addEventListener("click", delToDo);
   span.innerHTML = toDo;
-  // li.append(checkbox);
+  li.append(checkbox);
   li.append(span);
   li.append(delButton);
   li.id = toDoList.length + 1;
   li.addEventListener("click", function () {
-    // completeTodo(li.id);
-    complete(li.id);
+    completeTodo(li.id);
   });
   // checkbox?
-  // checkbox.addEventListener("click", function () {
-  //   // completeTodo(li.id);
-  //   console.log("checked");
-  // });
+  checkbox.addEventListener("click", function () {
+    completeTodo(li.id);
+    console.log("checked");
+  });
 
   toDos.append(li);
 }
@@ -90,24 +89,24 @@ function delToDo(event) {
   localStorage.setItem(TODOLIST, JSON.stringify(toDoList));
 }
 
-// function completeTodo(id) {
-//   const item = document.getElementById(id);
-//   if (item.classList.contains("checked")) {
-//     item.classList.remove("checked");
-//   } else {
-//     item.classList.add("checked");
-//   }
-// }
-
-function complete(event) {
-  // https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement
-  // const tar = event.target.parentElement;
-  if (event.classList.contains("checked")) {
-    event.classList.remove("checked");
+function completeTodo(id) {
+  const item = document.getElementById(id);
+  if (item.classList.contains("checked")) {
+    item.classList.remove("checked");
   } else {
-    event.classList.add("checked");
+    item.classList.add("checked");
   }
 }
+
+// function complete(event) {
+//   // https://developer.mozilla.org/en-US/docs/Web/API/Node/parentElement
+//   const tar = event.target.parentElement;
+//   if (tar.classList.contains("checked")) {
+//     tar.classList.remove("checked");
+//   } else {
+//     tar.classList.add("checked");
+//   }
+// }
 
 /////////////////////////////////////////
 // remove todo item
@@ -167,8 +166,8 @@ function init() {
 
   addTodoButton.addEventListener("click", createToDo);
   toDoForm.addEventListener("submit", createToDo);
-  // toDoForm.addEventListener("click", completeTodo);
-  toDoForm.addEventListener("click", complete);
+  toDoForm.addEventListener("click", completeTodo);
+  // toDoForm.addEventListener("click", complete);
 }
 
 init();

@@ -21,6 +21,7 @@ ul li {
   padding: 12px 8px 12px 40px;
   list-style-type: none;
   background: #eee;
+  opacity: 0.5;
   font-size: 18px;
   transition: 0.2s;
 
@@ -71,13 +72,15 @@ ul li.checked::before {
 }
 
 .close:hover {
-  background-color: #f44336;
+  background-color: #888888;
+  opacity: 0.9;
   color: white;
 }
 
 /* Style the header */
 .header {
-  background-color: #f44336;
+  background-color: #888888;
+  opacity: 0.9;
   padding: 30px 40px;
   color: white;
   text-align: center;
@@ -126,6 +129,10 @@ input {
 
 .bgImage {
   background-size: cover;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 
 /*  asdf*/
@@ -137,6 +144,10 @@ input {
   align-items: baseline;
   border-radius: 5px;
   background: var(--todo-bg);
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  align-items: center;
 }
 
 .filter {
@@ -174,7 +185,10 @@ input {
 }
 
 .flex-row {
+  background-color: rgb(148, 147, 147);
   display: flex;
+  bottom: 0;
+  width: 100vw;
   flex-flow: row nowrap;
   align-items: center;
 }
@@ -184,7 +198,8 @@ input {
   min-height: none;
   width: 1.5rem;
   height: 1.5rem;
-  margin: 0.5rem 0.5rem;
+  margin-top: auto;
+  margin-right: 5px;
   border-radius: 50px;
   border: 1px solid lightgray;
   cursor: pointer;
